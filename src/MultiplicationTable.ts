@@ -1,5 +1,6 @@
 export class MultiplicationTable {
   public render(start: number, end: number): string{
+    this.multiplicationTable(start,end)
   }
 
   public isValidInput(startNum:number,endNum:number):boolean{
@@ -32,7 +33,14 @@ export class MultiplicationTable {
   }
 
   public multiplicationTable(startNum:number,endNum:number):string[][]{
-
+    let res:string[][]=[]
+    if(this.isValidInput(startNum,endNum)){
+      for(let i=startNum;i++;i<=endNum){
+        for(let j=i;j++;j<=endNum)
+        res.push(this.multiplicationRow(i,j))
+      }
+    }
+    return res
   }
 
   public multiplicationRow(startNum:number,endNumber:number):string[]{
