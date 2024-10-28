@@ -1,4 +1,10 @@
+interface MultiplicationExpression {
+  firstMultiplier: number;
+  secondMultiplier: number;
+  product: number;
+}
 export class MultiplicationTable {
+
   public inBoundary(value: number): boolean {
     return value >= 1 && value <= 10;
   }
@@ -10,6 +16,13 @@ export class MultiplicationTable {
     }
     return true;
   }
+
+  public getExpression(firstMultiplier: number, secondMultiplier: number): MultiplicationExpression {
+    return { firstMultiplier: firstMultiplier, secondMultiplier: secondMultiplier, product: firstMultiplier * secondMultiplier };
+  }
+
+
+
   public render(start: number, end: number): string{
     let renderReslut: string = "";
     if (this.isValid(start, end)) return renderReslut; 
