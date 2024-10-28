@@ -16,4 +16,13 @@ export class MultiplicationTable {
     }
     return true;
   }
+  public Isvalid(start: number, end: number): boolean{
+    if(this.isCorrectOrder(start, end) && 
+    this.isRangeInTen(start) &&
+    this.isRangeInTen(end))
+    {
+      return true;
+    }
+    return false;
+  }
 }
