@@ -21,13 +21,14 @@ export class MultiplicationTable {
     return { firstMultiplier: firstMultiplier, secondMultiplier: secondMultiplier, product: firstMultiplier * secondMultiplier };
   }
 
-  public getRow(secondMultiplier: number, firstMultiplierStart: number, firstMultiplierEnd: number):MultiplicationExpression[] {
+  public getRow(secondMultiplier: number, firstMultiplierStart: number):MultiplicationExpression[] {
     let expressions: MultiplicationExpression[] = [];
-    for (let first = firstMultiplierStart; first <= firstMultiplierEnd; first++) {
+    for (let first = firstMultiplierStart; first <= secondMultiplier; first++) {
       expressions.push(this.getExpression(first, secondMultiplier));
     }
     return expressions;
   }
+
 
 
   public render(start: number, end: number): string{
