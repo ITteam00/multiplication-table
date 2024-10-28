@@ -1,6 +1,10 @@
 export class MultiplicationTable {
   public render(start: number, end: number): string {
-    return "1*1=1";
+    if (!this.isValid(start, end)) {
+      return "";
+    }
+    let numbers = this.cycleNumbers(start, end);
+    return this.formatNumbers(numbers);
   }
 
   public isValid(start: number, end: number): boolean {
