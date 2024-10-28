@@ -48,18 +48,18 @@ export class MultiplicationTable {
     let currentIndex = 0;
     if (multiplicationTable.length > 6) {
       for (let i = start; i <= end; i++) {
-          let line = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1)
-                        .map(item => item + ' '.repeat(9 - item.length))
-                        .join('');
-          renderedRes += line.trimEnd() + '\n';
+          let currentLineArray = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1);
+          let currentLineArrayWithSpace = currentLineArray.map(item => item + ' '.repeat(9 - item.length));
+          let currentLineString = currentLineArrayWithSpace.join("");
+          renderedRes += currentLineString.trimEnd() + '\n';
           currentIndex += i - start + 1;
       }
     } else if (multiplicationTable.length <= 6) {
       for (let i = start; i <= end; i++) {
-        let line = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1)
-                      .map(item => item + '  ')
-                      .join('');
-        renderedRes += line.trimEnd() + '\n';
+        let currentLineArray = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1);
+        let currentLineArrayWithSpace = currentLineArray.map(item => item + '  ');
+        let currentLineString = currentLineArrayWithSpace.join("");
+        renderedRes += currentLineString.trimEnd() + '\n';
         currentIndex += i - start + 1;
       }
     }
