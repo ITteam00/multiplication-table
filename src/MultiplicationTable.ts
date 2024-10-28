@@ -17,7 +17,24 @@ export class MultiplicationTable {
     return numbers;
   }
 
-  public formatNumbers(numbers: string[]): string {
-    return "";
+  public formatNumbers(numbers: [number, number][]): string {
+    let res: string[] = [];
+    let currentRow = 1;
+    let row: string[] = [];
+
+    numbers.forEach(([a, b]) => {
+      if (b > currentRow) {
+        res.push(row.join("   "));
+        row = [];
+        currentRow = b;
+      }
+      row.push(`${a}*${b}=${a * b}`);
+    });
+
+    if (row.length > 0) {
+      res.push(row.join("  "));
+    }
+
+    return res.join("\n");
   }
 }
