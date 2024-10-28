@@ -4,7 +4,8 @@ export class MultiplicationTable {
       return "";
     }
     let numbers = this.cycleNumbers(start, end);
-    return this.formatNumbers(numbers);
+    let lengths = this.countLinePadEndLengths(start, end);
+    return this.formatNumbers(numbers, lengths);
   }
 
   public isValid(start: number, end: number): boolean {
@@ -21,21 +22,23 @@ export class MultiplicationTable {
     return numbers;
   }
 
-  public formatNumbers(numbers: [number, number][]): string {
+  public formatNumbers(numbers: [number, number][], lengths: number[]): string {
     let res: string[] = [];
-    let currentRow = 1;
+
     let row: string[] = [];
 
     numbers.forEach(([a, b]) => {
-      if (b > currentRow) {
-        res.push(row.join(""));
-        row = [];
-        currentRow = b;
-      }
+      let currentLine = 1;
       if (a === b) {
         row.push(`${a}*${b}=${a * b}`);
+        res.push(row.join(""));
+        row = [];
+        currentLine = 1;
       } else {
-        row.push(`${a}*${b}=${a * b}` + this.addSpacesInRow(a, b));
+        row.push(
+          `${a}*${b}=${a * b}`.padEnd(lengths[currentLine - 1] + 2, " ")
+        );
+        currentLine++;
       }
     });
 
@@ -46,8 +49,13 @@ export class MultiplicationTable {
     return res.join("\n");
   }
 
-  public addSpacesInRow(a: number, b: number): string {
-    let spaces = " ".repeat(9 - `${a}*${b}=${a * b}`.length);
-    return spaces;
+  public countLinePadEndLengths(start: number, end: number): number[] {
+    let result: number[] = [];
+    for (let i = start; i <= end; i++) {
+      let number = `${i}*${end}=${i * end}`.length;
+      result.push(number);
+    }
+    console.log(result);
+    return result;
   }
 }
