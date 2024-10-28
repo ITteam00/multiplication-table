@@ -16,4 +16,8 @@ export class MultiplicationTable {
     }
     return numbers;
   }
+
+  public formatNumbers(numbers: string[]): string {
+    return "";
+  }
 }
