@@ -31,7 +31,7 @@ export class MultiplicationTable {
   }
 
   public generateMultiplicationRow(start: number, rowMultiplier: number): string[]{
-    const multiplicationRow: string[] = [];
+    let multiplicationRow: string[] = [];
     for(let i = start; i <= rowMultiplier; i++){
       let multiplicationNum: string = this.generateMultiplicationEquation(start, i);
       multiplicationRow.push(multiplicationNum);
@@ -39,5 +39,12 @@ export class MultiplicationTable {
     return multiplicationRow;
   }
 
-  public generateMultiplicationTable(start: number, end: number)
+  public generateMultiplicationTable(start: number, end: number): string[][]{
+    let multiplicationTable: string[][] = [];
+    for(let i = start; i <= end; i++){
+      let multiplicationRow: string[] = this.generateMultiplicationRow(start, i);
+      multiplicationTable = [...multiplicationTable, multiplicationRow];
+    }
+    return multiplicationTable;
+}
 }
