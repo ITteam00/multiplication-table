@@ -16,7 +16,7 @@ export class MultiplicationTable {
     }
     return true;
   }
-  public Isvalid(start: number, end: number): boolean{
+  public isvalid(start: number, end: number): boolean{
     if(this.isCorrectOrder(start, end) && 
     this.isRangeInTen(start) &&
     this.isRangeInTen(end))
@@ -24,5 +24,9 @@ export class MultiplicationTable {
       return true;
     }
     return false;
+  }
+
+  public generateMultiplicationEquation(multiplerRow: number, multiplerColumn: number): string{
+    return `${multiplerRow}*${multiplerColumn}=${multiplerRow*multiplerColumn}`
   }
 }
