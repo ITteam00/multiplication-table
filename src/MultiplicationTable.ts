@@ -38,8 +38,8 @@ export class MultiplicationTable {
     let multiplicationRow: string[] = [];
     for (let i = start; i <= rowMultiplier; i++) {
       let multiplicationNum: string = this.generateMultiplicationEquation(
-        start,
-        i
+        i,
+        rowMultiplier
       );
       multiplicationRow.push(multiplicationNum);
     }
@@ -61,7 +61,10 @@ export class MultiplicationTable {
     if (!this.isvalid(start, end)) {
       return "";
     }
-    let multiplicationTable: string[][] = this.generateMultiplicationTable(start, end);
+    let multiplicationTable: string[][] = this.generateMultiplicationTable(
+      start,
+      end
+    );
     let rendered: string = this.renderMultiplicationTable(multiplicationTable);
     return rendered;
   }
@@ -72,9 +75,9 @@ export class MultiplicationTable {
       for (let j = 0; j < multiplicationTable[i].length; j++) {
         table += multiplicationTable[i][j];
         table += "\t";
-        if (j < multiplicationTable[i].length - 1) {
-          table += "\n";
-        }
+      }
+      if (i < multiplicationTable[i].length - 1) {
+        table += "\n";
       }
     }
     return table;
