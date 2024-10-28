@@ -26,9 +26,9 @@ export class MultiplicationTable {
     let res: string[] = [];
 
     let row: string[] = [];
+    let currentLine = 1;
 
     numbers.forEach(([a, b]) => {
-      let currentLine = 1;
       if (a === b) {
         row.push(`${a}*${b}=${a * b}`);
         res.push(row.join(""));
