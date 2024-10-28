@@ -51,48 +51,46 @@ export class MultiplicationTable {
   }
 
   public renderRows(table: MultiplicationExpression[][]): string {
-    let formattedTable = "";
-    let maxLength = 0;
+    const rowLength = table.length;
+    const result: string[] = [];
+    const columnLengths: number[] = [];
+
     table.forEach((row) => {
-      row.forEach(({ firstMultiplier, secondMultiplier, product }) => {
-        maxLength = Math.max(
-          maxLength,
-          firstMultiplier.toString().length,
-          secondMultiplier.toString().length,
-          product.toString().length
-        );
-      });
+      row.forEach(
+        ({ firstMultiplier, secondMultiplier, product }, colIndex) => {
+          const expressionLength =
+            `${firstMultiplier}*${secondMultiplier}=${product}`.length;
+          if (!columnLengths[colIndex]) {
+            columnLengths[colIndex] = expressionLength;
+          } else {
+            columnLengths[colIndex] = Math.max(
+              columnLengths[colIndex],
+              expressionLength
+            );
+          }
+        }
+      );
     });
 
     table.forEach((row) => {
       let rowString = "";
-      row.forEach(({ firstMultiplier, secondMultiplier, product }) => {
-        const formattedFirst = firstMultiplier
-          .toString()
-          .padStart(maxLength, " ");
-        const formattedSecond = secondMultiplier
-          .toString()
-          .padStart(maxLength, " ");
-        const formattedProduct = product.toString().padStart(maxLength, " ");
-        rowString += `${formattedFirst} * ${formattedSecond} = ${formattedProduct}  `;
-      });
-      formattedTable += (rowString + '\n');
+      row.forEach(
+        ({ firstMultiplier, secondMultiplier, product }, colIndex) => {
+          const expression = `${firstMultiplier}*${secondMultiplier}=${product}`;
+          rowString += expression.padEnd(columnLengths[colIndex] + 2, " ");
+        }
+      );
+      result.push(rowString.trim());
     });
-    return formattedTable;
+
+    return result.join('\n');
   }
 
   public render(start: number, end: number): string {
     let renderReslut: string = "";
     if (!this.isValid(start, end)) return renderReslut;
-    
     const expressionRows = this.getRows(start, end);
-
-    console.log(111);
-
     renderReslut = this.renderRows(expressionRows);
-    console.log(222);
-
-    console.log(renderReslut);
     return renderReslut;
   }
 }
