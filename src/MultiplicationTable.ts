@@ -26,28 +26,45 @@ export class MultiplicationTable {
   }
 
   public iterateFromStart(start: number, end: number): string[] {
-    let res: string[] = [];
+    let multiplicationTable: string[] = [];
     for (let main = start; main <= end; main++) {
         let generatedList = this.generateFromIndex(start, main);
         for (let item of generatedList) {
-            // let spaceLength: number = 9 - item.length;
-            // res.push(item + ' '.repeat(spaceLength));
-            res.push(item);
+          multiplicationTable.push(item);
         }
     }
-    console.log("res");
-    console.log(res);
-    return res;
+    return multiplicationTable;
   }
 
 
-  public render(start: number, end: number): string {
-    if (!this.validateInputs(start, end)) {
-      return "";
+  public render(start: any, end: any): string {
+    let isValid: boolean = this.validateInputs(start, end);
+    if (!isValid) {
+        return "";
     }
-    let res: string[] = this.iterateFromStart(start, end);
-    return res.toString();
 
+    let multiplicationTable: string[] = this.iterateFromStart(start, end);
+    let renderedRes: string = '';
+    let currentIndex = 0;
+    if (multiplicationTable.length > 6) {
+      for (let i = start; i <= end; i++) {
+          let line = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1)
+                        .map(item => item + ' '.repeat(9 - item.length))
+                        .join('');
+          renderedRes += line.trimEnd() + '\n';
+          currentIndex += i - start + 1;
+      }
+    } else {
+      for (let i = start; i <= end; i++) {
+        let line = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1)
+                      .map(item => item + '  ')
+                      .join('');
+        renderedRes += line.trimEnd() + '\n';
+        currentIndex += i - start + 1;
+      }
+    }
+    let renderedMultiplicationTable =  renderedRes.trim();
+    return renderedMultiplicationTable;
   }
 
 
