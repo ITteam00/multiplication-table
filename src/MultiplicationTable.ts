@@ -54,7 +54,7 @@ export class MultiplicationTable {
           renderedRes += line.trimEnd() + '\n';
           currentIndex += i - start + 1;
       }
-    } else {
+    } else if (multiplicationTable.length <= 6) {
       for (let i = start; i <= end; i++) {
         let line = multiplicationTable.slice(currentIndex, currentIndex + i - start + 1)
                       .map(item => item + '  ')
