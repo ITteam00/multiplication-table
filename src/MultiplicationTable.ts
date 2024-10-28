@@ -61,7 +61,9 @@ export class MultiplicationTable {
     if (!this.isvalid(start, end)) {
       return "";
     }
-
+    let multiplicationTable: string[][] = this.generateMultiplicationTable(start, end);
+    let rendered: string = this.renderMultiplicationTable(multiplicationTable);
+    return rendered;
   }
 
   public renderMultiplicationTable(multiplicationTable: string[][]): string {
