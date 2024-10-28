@@ -57,14 +57,14 @@ export class MultiplicationTable {
     }
     return multiplicationTable;
   }
-  public renderMultiplicationTable(start: number, end: number): string {
+  public render(start: number, end: number): string {
     if (!this.isvalid(start, end)) {
       return "";
     }
-    
+
   }
 
-  public render(multiplicationTable: string[][]): string {
+  public renderMultiplicationTable(multiplicationTable: string[][]): string {
     let table: string = "";
     for (let i = 0; i < multiplicationTable.length; i++) {
       for (let j = 0; j < multiplicationTable[i].length; j++) {
