@@ -36,6 +36,9 @@ export class MultiplicationTable {
   }
 
   public multiplicationRow(startNum:number,endNumber:number):string[]{
-
+    let res:string[]=[]
+    for(let i=startNum;i<=endNumber;i++){
+      res.push(`${startNum}*${i}=${startNum*i}`)
+    }
   }
 }
