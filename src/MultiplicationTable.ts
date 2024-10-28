@@ -31,7 +31,7 @@ export class MultiplicationTable {
     secondMultiplier: number,
     firstMultiplierStart: number
   ): MultiplicationExpression[] {
-    let expressions: MultiplicationExpression[] = [];
+    const expressions: MultiplicationExpression[] = [];
     for (let first = firstMultiplierStart; first <= secondMultiplier; first++) {
       expressions.push(this.getExpression(first, secondMultiplier));
     }
@@ -39,7 +39,7 @@ export class MultiplicationTable {
   }
 
   public getRows(start: number, end: number): MultiplicationExpression[][] {
-    let expressionRows: MultiplicationExpression[][] = [];
+    const expressionRows: MultiplicationExpression[][] = [];
     for (
       let secondMultiplier: number = start;
       secondMultiplier <= end;
