@@ -21,7 +21,18 @@ export class MultiplicationTable {
   }
 
   public iterateFromStart(start: number, end: number): string[] {
-
+    let res: string[] = [];
+    for (let main = start; main <= end; main++) {
+        let generatedList = this.generateFromIndex(start, main);
+        for (let item of generatedList) {
+            // let spaceLength: number = 9 - item.length;
+            // res.push(item + ' '.repeat(spaceLength));
+            res.push(item);
+        }
+    }
+    console.log("res");
+    console.log(res);
+    return res;
   }
 
 
@@ -29,7 +40,9 @@ export class MultiplicationTable {
     if (!this.validateInputs(start, end)) {
       return "";
     }
-    return ""
+    let res: string[] = this.iterateFromStart(start, end);
+    return res.toString();
+
   }
 
 
