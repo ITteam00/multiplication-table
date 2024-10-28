@@ -1,10 +1,29 @@
 export class MultiplicationTable {
-  public render(start: number, end: number): string{
-    this.multiplicationTable(start,end)
+  public render(start: number, end: number): string {
+    let res = ""
+    let multiplicationList = this.multiplicationTable(start, end)
+    let padCount: number[] = []
+    for (let i = 0; i < multiplicationList.length; i++) {
+      padCount.push(multiplicationList[multiplicationList.length - 1][i].length)
+    }
+    for (let i = 0; i < multiplicationList.length; i++) {
+      for (let j = 0; j < multiplicationList[i].length; j++) {
+        if (j < i) {
+          res += multiplicationList[i][j].padEnd(padCount[j] + 2, ' ')
+        }
+        else {
+          res += multiplicationList[i][j]
+        }
+      }
+      if (i < multiplicationList.length - 1) {
+        res += '\n'
+      }
+    }
+    return res
   }
 
-  public isValidInput(startNum:number,endNum:number):boolean{
-    if (this.isValidNumber(startNum)&&this.isValidNumber(endNum)&&this.isValidRange(startNum,endNum)){
+  public isValidInput(startNum: number, endNum: number): boolean {
+    if (this.isValidNumber(startNum) && this.isValidNumber(endNum) && this.isValidRange(startNum, endNum)) {
       return true
     }
     else {
