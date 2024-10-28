@@ -7,11 +7,11 @@ export class MultiplicationTable {
     return start >= 1 && start <= 10 && end >= 1 && end <= 10 && start <= end;
   }
 
-  public cycleNumbers(start: number, end: number): string[] {
-    let numbers: string[] | undefined = [];
+  public cycleNumbers(start: number, end: number): [number, number][] {
+    let numbers: [number, number][] = [];
     for (let i = start; i <= end; i++) {
-      for (let j = i; j <= end; j++) {
-        numbers.push(`${i} * ${j} = ${i * j}`);
+      for (let j = start; j <= i; j++) {
+        numbers.push([j, i]);
       }
     }
     return numbers;
