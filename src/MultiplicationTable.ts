@@ -17,7 +17,12 @@ export class MultiplicationTable {
   }
 
   public generateFromIndex(start: number, main: number): string[] {
-
+    let generatedList: string[] = [];
+    for (let first = start; first <= main; first++) {
+      let cur = `${first}*${main}=${first * main}`;
+      generatedList.push(cur);
+    }
+    return generatedList;
   }
 
   public iterateFromStart(start: number, end: number): string[] {
