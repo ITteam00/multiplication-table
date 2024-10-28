@@ -65,18 +65,30 @@ export class MultiplicationTable {
       start,
       end
     );
-    let rendered: string = this.renderMultiplicationTable(multiplicationTable);
+    let tableLength: number[] = this.calculateLength(multiplicationTable);
+    let rendered: string = this.renderMultiplicationTable(multiplicationTable, tableLength);
     return rendered;
   }
-
-  public renderMultiplicationTable(multiplicationTable: string[][]): string {
+  public calculateLength(multiplicationTable: string[][]): number[]{
+    let tableLength: number[] = [];
+    for (let i = 0; i < multiplicationTable.length; i++) {
+      tableLength.push(
+        multiplicationTable[multiplicationTable.length - 1][i].length + 2
+      );
+    }
+    return tableLength;
+  }
+  public renderMultiplicationTable(multiplicationTable: string[][], tableLength: number[]): string {
     let table: string = "";
     for (let i = 0; i < multiplicationTable.length; i++) {
       for (let j = 0; j < multiplicationTable[i].length; j++) {
-        table += multiplicationTable[i][j];
-        table += "\t";
+        if (j < i) {
+          table += multiplicationTable[i][j].padEnd(tableLength[j], " ");
+        } else {
+          table += multiplicationTable[i][j];
+        }
       }
-      if (i < multiplicationTable[i].length - 1) {
+      if (i < multiplicationTable.length - 1) {
         table += "\n";
       }
     }
