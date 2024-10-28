@@ -37,4 +37,9 @@ export class MultiplicationTable {
 
     return res.join("\n");
   }
+
+  public addSpacesInRow(a: number, b: number): string {
+    let spaces = " ".repeat(9 - `${a}*${b}=${a * b}`.length);
+    return spaces;
+  }
 }
