@@ -24,15 +24,19 @@ export class MultiplicationTable {
 
     numbers.forEach(([a, b]) => {
       if (b > currentRow) {
-        res.push(row.join("   "));
+        res.push(row.join(""));
         row = [];
         currentRow = b;
       }
-      row.push(`${a}*${b}=${a * b}`);
+      if (a === b) {
+        row.push(`${a}*${b}=${a * b}`);
+      } else {
+        row.push(`${a}*${b}=${a * b}` + this.addSpacesInRow(a, b));
+      }
     });
 
     if (row.length > 0) {
-      res.push(row.join("  "));
+      res.push(row.join(""));
     }
 
     return res.join("\n");
