@@ -9,6 +9,11 @@ export class MultiplicationTable {
 
   public cycleNumbers(start: number, end: number): string[] {
     let numbers: string[] | undefined = [];
+    for (let i = start; i <= end; i++) {
+      for (let j = i; j <= end; j++) {
+        numbers.push(`${i} * ${j} = ${i * j}`);
+      }
+    }
     return numbers;
   }
 }
