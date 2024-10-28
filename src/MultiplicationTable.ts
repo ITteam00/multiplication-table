@@ -52,7 +52,7 @@ export class MultiplicationTable {
 
   public render(start: number, end: number): string {
     let renderReslut: string = "";
-    if (this.isValid(start, end)) return renderReslut;
+    if (!this.isValid(start, end)) return renderReslut;
     return renderReslut;
   }
 }
