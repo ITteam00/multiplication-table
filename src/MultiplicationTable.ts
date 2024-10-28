@@ -30,11 +30,14 @@ export class MultiplicationTable {
     return `${multiplerRow}*${multiplerColumn}=${multiplerRow*multiplerColumn}`;
   }
 
-  public generateMultiplicationRow(start: number, rowMultiplier: number): string{
+  public generateMultiplicationRow(start: number, rowMultiplier: number): string[]{
     const multiplicationRow: string[] = [];
     for(let i = start; i <= rowMultiplier; i++){
       let multiplicationNum: string = this.generateMultiplicationEquation(start, i);
       multiplicationRow.push(multiplicationNum);
     }
+    return multiplicationRow;
   }
+
+  public generateMultiplicationTable(start: number, end: number)
 }
