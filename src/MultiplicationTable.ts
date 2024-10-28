@@ -55,7 +55,6 @@ export class MultiplicationTable {
       let number = `${i}*${end}=${i * end}`.length;
       result.push(number);
     }
-    console.log(result);
     return result;
   }
 }
