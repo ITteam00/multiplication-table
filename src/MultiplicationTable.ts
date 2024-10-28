@@ -6,4 +6,9 @@ export class MultiplicationTable {
   public isValid(start: number, end: number): boolean {
     return start >= 1 && start <= 10 && end >= 1 && end <= 10 && start <= end;
   }
+
+  public cycleNumbers(start: number, end: number): string[] {
+    let numbers: string[] | undefined = [];
+    return numbers;
+  }
 }
