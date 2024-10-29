@@ -9,6 +9,8 @@ export class MultiplicationTable {
   }
 
   public isValid(start: number, end: number): boolean {
+    if (!Number.isInteger(start) || !Number.isInteger(end))
+      return false;
     if (start > end) return false;
     if (!this.inBoundary(start) || !this.inBoundary(end)) {
       return false;
